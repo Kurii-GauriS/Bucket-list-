@@ -4,6 +4,9 @@ body{
     text-align:center;
     padding:20px;
 }
+body{
+    cursor:url("images/star-cursor.png"), auto;
+}
 .gallery{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -295,4 +298,18 @@ button:hover{
     transform:translateX(10px);
 
     background:#ffc0dd;
+}
+.bucket-container{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:20px;
+}
+
+#bucketInput{
+    border:none;
+    border-radius:20px;
+    padding:12px 18px;
+    background:#fff7fb;
+    width:300px;
 }
