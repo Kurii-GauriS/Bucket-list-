@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SKZ Bucket List ✨</title>
+    <title>✨ SKZ Bucket List ✨</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +15,9 @@
 </head>
 
 <body>
-
+<button onclick="addTask(50)">
+    🎀 Add Dream 🎀
+</button>
     <h1>✨ My SKZ Bucket List ✨</h1>
 
     <!-- Bucket List -->
@@ -27,7 +29,7 @@
             id="bucketInput"
             placeholder="Add a bucket list dream...">
 
-        <button onclick="addTask()">
+        <button onclick="addTask(50)">
             Add ✨
         </button>
 
@@ -37,7 +39,9 @@
 
     <!-- Polaroid Gallery -->
 
-    <h2>📸Stray kids 📸</h2>
+    <button onclick="addPolaroid(100)">
+        📸Stray kids📸
+    </button>
 
     <section class="gallery">
 
@@ -80,7 +84,6 @@
         
     </section>
     <!-- floting stickers -->
-     <h1>✨ SKZ Stickers ✨</h1>
      <div class="sticker heart1">💖</div>
      <div class="sticker heart2">💚</div>
      <div class="sticker star1">⭐</div>
@@ -152,3 +155,7 @@
     </iframe>
 
 </section>
+<nav class="navbar">
+    <a href="index.html">🏠 Home</a>
+    <a href="wishlist.html">🖤 Wishlist</a>
+</nav>
