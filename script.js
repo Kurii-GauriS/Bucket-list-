@@ -41,6 +41,7 @@ startBtn.onclick = async ()=>{
 
     video.srcObject = stream;
 }
+
 const captureBtn =
 document.getElementById("capture");
 
