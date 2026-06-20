@@ -184,3 +184,9 @@ card.querySelector(".deleteBtn")
     location.reload();
 
 });
+document.getElementById("musicBtn").addEventListener("click", () => {
+    window.open(
+        "https://www.youtube.com/watch?v=k1-FXQjFZJU",
+        "_blank"
+    );
+});
