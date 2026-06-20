@@ -49,4 +49,110 @@ my fav colors for skz<br>
 Pink  : #ed9dbe<br>
 Green : #aaea97<br>
 White : #fffafc<br>
-Accent: #90c6df<br>
+Accent: #90c6df<br><br><br><br><br>
+<h1>
+# 🌸 SKZ Bucket List Scrapbook 💖</h1>
+<h4>
+A cute scrapbook-inspired Stray Kids fan website built using **HTML, CSS, and JavaScript**.<br>
+<br>
+This project combines a personal bucket list,<br>SKZ-themed polaroid gallery, photo booth ideas, music, and aesthetic scrapbook elements into one interactive website.
+
+## ✨ Features
+
+### 📸 SKZ Polaroid Gallery
+
+* 8-member Stray Kids polaroid wall
+* Responsive 4-column layout
+* Hover animations
+* Scrapbook-inspired design
+
+### 🎀 Aesthetic Design
+
+* Pink & green color palette
+* Petit Formal Script Google Font
+* Floating stickers and decorative emojis
+* Soft scrapbook styling
+
+### 📝 Bucket List System
+
+* Add personal dreams and goals
+* Interactive dream input section
+* LocalStorage support (in progress)
+
+### 🖤 Wishlist Page
+
+* Separate wishlist page
+* Connected through navigation
+* Designed to store dreams added from the homepage
+
+### 🎵 Music Section
+
+* Embedded Stray Kids Gov Ball performance
+* YouTube integration
+
+### 🌐 Deployment
+
+* Hosted on Vercel
+* Connected to GitHub for automatic deployment
+
+---
+
+## 🛠️ Technologies Used
+
+* HTML5
+* CSS3
+* JavaScript
+* LocalStorage
+* Git & GitHub
+* Vercel
+
+---
+
+## 📂 Project Structure
+
+```text
+Bucket-list-
+│
+├── index.html
+├── wishlist.html
+├── style.css
+├── script.js
+│
+└── images
+    ├── bangchan.jpg
+    ├── leeknow.jpg
+    ├── changbin.jpg
+    ├── hyunjin.jpg
+    ├── han.jpg
+    ├── felix.jpg
+    ├── seungmin.jpg
+    └── jeongin.jpg
+```
+
+---
+
+## 🚀 Live Website
+
+https://bucket-list-seven-nu.vercel.app/
+
+---
+
+## 🎯 Future Improvements
+
+* [ ] Complete LocalStorage wishlist system
+* [ ] Photo strip camera booth
+* [ ] Member-specific photo albums
+* [ ] Achievement / Completed Dreams page
+* [ ] Draggable scrapbook stickers
+* [ ] Sparkle mouse effects
+* [ ] Custom cursor
+* [ ] Dark pink & black wishlist theme
+* [ ] Animated transitions
+
+---
+
+## 💖 Inspiration
+
+Created as a Stray Kids-inspired digital scrapbook where memories, dreams, music, and creativity come together in one place.
+
+*"You make Stray Kids stay."* ✨
