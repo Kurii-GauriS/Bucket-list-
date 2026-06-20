@@ -63,3 +63,59 @@ button:hover{
     box-shadow:
     0 8px 18px rgba(0,0,0,.2);
 }
+.sticker{
+    position:fixed;
+    font-size:2rem;
+    pointer-events:none;
+    animation:float 4s ease-in-out infinite;
+}
+
+.heart1{
+    top:10%;
+    left:5%;
+}
+
+.heart2{
+    top:45%;
+    right:8%;
+}
+
+.star1{
+    top:20%;
+    right:10%;
+}
+
+.star2{
+    bottom:15%;
+    left:8%;
+}
+
+.ribbon{
+    top:55%;
+    right:4%;
+}
+
+.sparkle{
+    top:35%;
+    left:2%;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+}
+body{
+    background:
+    linear-gradient(
+        135deg,
+        #80c86a,
+        #eb9abc
+    );
+
+    min-height:100vh;
+}
