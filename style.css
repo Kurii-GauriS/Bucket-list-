@@ -35,3 +35,31 @@ body{
     font-family:"Petit Formal Script", cursive;
     font-size:18px;
 }
+button{
+    background: linear-gradient(
+        135deg,
+        #ffd6e8,
+        #c8f7c5
+    );
+
+    color:#444;
+    border:none;
+    padding:12px 20px;
+    border-radius:25px;
+
+    font-family:"Petit Formal Script", cursive;
+    font-size:16px;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 4px 12px rgba(0,0,0,.15);
+
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-3px);
+    box-shadow:
+    0 8px 18px rgba(0,0,0,.2);
+}
