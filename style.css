@@ -1,12 +1,12 @@
 body{
-    font-family: poppins, sans-serif;
-    background:#fff0f6;
+    font-family: "Petit Formal Script", cursive;
+    background:#d88fac;
     text-align:center;
     padding:20px;
 }
 
 h1{
-    color:#ff69b4;
+    color:#90df90;
 }
 
 .bucket-container{
@@ -67,4 +67,34 @@ video{
 
 canvas{
     display:none;
+}
+.gallery{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px;
+}
+
+.polaroid{
+    width:220px;
+    background:white;
+    padding:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+    transition:.3s;
+}
+
+.polaroid:hover{
+    transform:scale(1.05) rotate(2deg);
+}
+
+.polaroid img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.polaroid p{
+    margin-top:10px;
+    font-family:"Petit Formal Script", cursive;
+    font-size:18px;
 }
