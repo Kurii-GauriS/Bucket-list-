@@ -17,31 +17,36 @@ Bucket-List<br>
     ├── felix.jpg<br>
     ├── seungmin.jpg<br>
     ├── Jeong-in.jpg<br>
-
-
-    .gallery{
-    display:grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap:25px;
-    max-width:1200px;
-    margin:40px auto;
-    justify-items:center;
-}
-
-@media (max-width: 1000px){
-    .gallery{
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 768px){
-    .gallery{
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 500px){
-    .gallery{
-        grid-template-columns: 1fr;
-    }
-}
+<br>
+<br>
+    .gallery{<br>
+    display:grid;<br>
+    grid-template-columns: repeat(4, 1fr);<br>
+    gap:25px;<br>
+    max-width:1200px;<br>
+    margin:40px auto;<br>
+    justify-items:center;<br>
+}<br>
+<br>
+@media (max-width: 1000px){<br>
+    .gallery{<br>
+        grid-template-columns: repeat(3, 1fr);<br>
+    }<br>
+}<br>
+<br>
+@media (max-width: 768px){<br>
+    .gallery{<br>
+        grid-template-columns: repeat(2, 1fr);<br>
+    }<br>
+}<br>
+<br>
+@media (max-width: 500px){<br>
+    .gallery{<br>
+        grid-template-columns: 1fr;<br>
+    }<br>
+}<br>
+my fav colors for skz<br>
+Pink  : #ed9dbe<br>
+Green : #aaea97<br>
+White : #fffafc<br>
+Accent: #90c6df<br>
