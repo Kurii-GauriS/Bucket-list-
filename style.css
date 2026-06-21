@@ -313,3 +313,7 @@ button:hover{
     background:#fff7fb;
     width:300px;
 }
+.sticker {
+    pointer-events: none;
+    z-index: 0;
+}
