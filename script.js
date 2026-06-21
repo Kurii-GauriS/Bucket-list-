@@ -1,4 +1,5 @@
-function addTask() {
+function addTask()
+{
 
 ```
 const input = document.getElementById("bucketInput");
@@ -43,10 +44,10 @@ dreams.forEach((dream, index) => {
 
     card.classList.add("wish-card");
 
-    ard.innerHTML = `
+    card.innerHTML = `
         <span>${dream}</span>
         <button class="deleteBtn">❌</button>
-    `;  
+    `;'
 
     card.querySelector(".deleteBtn")
         .addEventListener("click", () => {
