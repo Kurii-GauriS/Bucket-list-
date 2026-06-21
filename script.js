@@ -43,30 +43,7 @@ dreams.forEach((dream, index) => {
         document.createElement("div");
 
     card.classList.add("wish-card");
-
-    card.innerHTML = `
-    <span>${dream}
-    </span>
-    <button class="deleteBtn">❌</button>
-    `;'
-
-    card.querySelector(".deleteBtn")
-        .addEventListener("click", () => {
-
-            dreams.splice(index, 1);
-
-            localStorage.setItem(
-                "dreams",
-                JSON.stringify(dreams)
-            );
-
-            loadWishlist();
-        });
-
-    container.appendChild(card);
-});
-```
-
+    card.textContent = dream;
 }
 
 loadWishlist();
