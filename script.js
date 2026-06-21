@@ -44,7 +44,7 @@ dreams.forEach((dream, index) => {
     card.classList.add("wish-card");
 
     card.innerHTML = `
-        🌸 ${dream}
+         ${dream}
         <button class="deleteBtn">❌</button>
     `;
 
