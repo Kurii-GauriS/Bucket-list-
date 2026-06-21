@@ -43,10 +43,10 @@ dreams.forEach((dream, index) => {
 
     card.classList.add("wish-card");
 
-    card.innerHTML = `
-         ${dream}
+    ard.innerHTML = `
+        <span>${dream}</span>
         <button class="deleteBtn">❌</button>
-    `;
+    `;  
 
     card.querySelector(".deleteBtn")
         .addEventListener("click", () => {
