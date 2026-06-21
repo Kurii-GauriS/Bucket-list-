@@ -24,7 +24,7 @@ alert("Dream Added! ✨");
 
 }
 
-function loadWishlist() {
+function loadWishlist() {}
 
 ```
 const container =
@@ -121,6 +121,4 @@ musicBtn.addEventListener("click", () => {
         "_blank"
     );
 });
-```
-
-}
+``
