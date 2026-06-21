@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<h2>📸Photo Booth</h2>
+
+<div id="photoGallery"></div>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+<nav class="navbar">
+    <a href="index.html">🏠 Home</a>
+    <a href="wishlist.html">🖤 Wishlist</a>
+</nav>
+</head>
+<body>
+   <div class="filters">
+
+    <button onclick="setFilter('none')">
+        📸Original
+    </button>
+
+    <button onclick="setFilter('sepia(40%) saturate(150%)')">
+        🤎 Vintage
+    </button>
+
+    <button onclick="setFilter('brightness(120%) contrast(120%)')">
+        ✨ Bright
+    </button>
+
+    <button onclick="setFilter('grayscale(100%)')">
+        🖤 B&W
+    </button>
+
+    <button onclick="setFilter('hue-rotate(320deg)')">
+        🌸 Pink Dream
+    </button>
+    <!-- floating stickers -->
+<div class="sticker heart1">💖</div>
+<div class="sticker s2">💚</div>
+<div class="sticker s3">🌸</div>
+<div class="sticker s4">✨</div>
+<div class="sticker s5">🎉</div>
+<div class="sticker s6">🎈</div>
+<div class="sticker s7">💜</div>
+<div class="sticker s8">💙</div>
+<div class="sticker s9">🌟</div>
+<div class="sticker s10">🎀</div>
+<div class="sticker s11">🍀</div>
+<div class="sticker s12">🐣</div>
+<div class="sticker s13">🦄</div>
+<div class="sticker s14">🚀</div>
+<div class="sticker s15">🌈</div>
+<div class="sticker s16">🍓</div>
+<div class="sticker s17">🍮</div>
+<div class="sticker s18">🧸</div>
+<div class="sticker s19">🐰</div>
+<div class="sticker s20">🦊</div>
+<div class="sticker s21">☁️</div>
+<!-- rest of stickers -->
+ <!-- Photo Booth -->
+
+    <h2>📷 Photo Strip Booth</h2>
+
+    <section class="camera-box">
+
+        <video
+            id="video"
+            autoplay
+            playsinline>
+        </video>
+
+        <button id="startCamera">
+           Click to Start Camera
+        </button>
+
+        <button id="capture">
+            Capture
+        </button>
+
+        <canvas id="canvas"></canvas>
+
+    </section>
+
+    <script src="script.js"></script>
+
+</div>
+
+</body>
+</html>

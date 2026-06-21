@@ -122,3 +122,66 @@ musicBtn.addEventListener("click", () => {
     );
 });
 ``
+const image = canvas.toDataURL("image/png");
+let photos =
+    JSON.parse(localStorage.getItem("photos")) || [];
+
+photos.push(image);
+
+localStorage.setItem(
+    "photos",
+    JSON.stringify(photos)
+);
+const image = canvas.toDataURL("image/png");
+function loadPhotos() {
+
+    const gallery =
+        document.getElementById("photoGallery");
+
+    if (!gallery) return;
+
+    gallery.innerHTML = "";
+
+    let photos =
+        JSON.parse(localStorage.getItem("photos")) || [];
+
+    photos.forEach(photo => {
+
+        let img =
+            document.createElement("img");
+
+        img.src = photo;
+        img.width = 150;
+
+        gallery.appendChild(img);
+    });
+}
+
+loadPhotos();
+let currentFilter = "none";
+
+function setFilter(filter) {
+
+    currentFilter = filter;
+
+    video.style.filter = filter;
+}
+let currentFilter = "none";
+
+function setFilter(filter) {
+    currentFilter = filter;
+
+    const video = document.getElementById("video");
+
+    if(video){
+        video.style.filter = filter;
+    }
+}
+
+ctx.filter = currentFilter;
+
+ctx.drawImage(
+    video,
+    0,
+    0
+);
