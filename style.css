@@ -310,10 +310,14 @@ button:hover{
     border:none;
     border-radius:20px;
     padding:12px 18px;
-    background:#fff7fb;
+    background:#f0abce;
     width:300px;
 }
 .sticker {
     pointer-events: none;
     z-index: 0;
+}
+.sticker {
+    opacity: 0.15;
+    z-index: -1;
 }
