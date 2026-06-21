@@ -1,11 +1,17 @@
 body{
     font-family: "Petit Formal Script", cursive;
-    background:#d88fac;
+    cursor:url("images/star-cursor.png"), auto;
+
+    background:
+    linear-gradient(
+        135deg,
+        #80c86a,
+        #eb9abc
+    );
+
     text-align:center;
     padding:20px;
-}
-body{
-    cursor:url("images/star-cursor.png"), auto;
+    min-height:100vh;
 }
 .gallery{
     display: grid;
@@ -111,16 +117,6 @@ button:hover{
     50%{
         transform:translateY(-15px);
     }
-}
-body{
-    background:
-    linear-gradient(
-        135deg,
-        #80c86a,
-        #eb9abc
-    );
-
-    min-height:100vh;
 }
 .polaroid{
     position:relative;
@@ -318,6 +314,6 @@ button:hover{
     z-index: 0;
 }
 .sticker {
-    opacity: 4.4;
+    opacity: 1;
     z-index: -1;
 }
