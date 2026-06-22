@@ -287,3 +287,77 @@ captureBtn.addEventListener("click", () => {
     console.log(image);
 
 });
+function loadPhotos() {
+
+    const gallery =
+        document.getElementById("photoGallery");
+
+    if (!gallery) return;
+
+    gallery.innerHTML = "";
+
+    let photos =
+        JSON.parse(
+            localStorage.getItem("photos")
+        ) || [];
+
+    photos.forEach((photo, index) => {
+
+        const container =
+            document.createElement("div");
+
+        container.classList.add("photo-card");
+
+        const img =
+            document.createElement("img");
+
+        img.src = photo;
+
+        const delBtn =
+            document.createElement("button");
+
+        delBtn.innerHTML = "🗑️";
+
+        delBtn.onclick = () => {
+
+            photos.splice(index, 1);
+
+            localStorage.setItem(
+                "photos",
+                JSON.stringify(photos)
+            );
+
+            loadPhotos();
+        };
+
+        container.appendChild(img);
+        container.appendChild(delBtn);
+
+        gallery.appendChild(container);
+    });
+}
+const saveBtn =
+document.getElementById("saveStrip");
+
+if(saveBtn){
+
+    saveBtn.onclick = () => {
+
+        const link =
+            document.createElement("a");
+
+        link.download =
+            "SKZ-Photo-Strip.png";
+
+        link.href =
+            canvas.toDataURL("image/png");
+
+        link.click();
+    };
+}
+if(photos.length >= 4){
+
+    alert("✨ Photo strip complete!");
+
+    return;
+}
