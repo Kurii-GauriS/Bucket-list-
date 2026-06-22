@@ -348,3 +348,110 @@ button:hover{
     margin-bottom:10px;
     border-radius:10px;
 }
+.member-link{
+    text-decoration:none;
+    color:inherit;
+}
+/* ==========================
+   BANG CHAN BOOK
+========================== */
+
+.bangchan-page{
+
+    background:
+    linear-gradient(
+        180deg,
+        #e7f4d8,
+        #f9d7e8
+    );
+
+    min-height:100vh;
+
+    text-align:center;
+
+    padding:30px;
+}
+
+.bangchan-page h1{
+
+    font-family:
+    "Petit Formal Script",
+    cursive;
+
+    font-size:3rem;
+
+    color:#4d704d;
+}
+
+.subtitle{
+
+    font-size:1.2rem;
+
+    margin-bottom:30px;
+}
+
+.memory-book{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:30px;
+
+    max-width:900px;
+
+    margin:auto;
+}
+
+.scrap-card{
+
+    background:white;
+
+    padding:15px;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 5px 15px rgba(0,0,0,.15);
+
+    transition:.3s;
+}
+
+.scrap-card:hover{
+
+    transform:
+    rotate(2deg)
+    scale(1.03);
+}
+
+.scrap-card img{
+
+    width:100%;
+
+    border-radius:15px;
+}
+
+.stickers{
+
+    margin-top:40px;
+
+    font-size:2rem;
+}
+
+.back-btn{
+
+    display:inline-block;
+
+    background:#f9d7e8;
+
+    padding:12px 20px;
+
+    border-radius:20px;
+
+    text-decoration:none;
+
+    color:black;
+
+    margin-bottom:20px;
+}
