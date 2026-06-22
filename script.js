@@ -336,6 +336,7 @@ function loadPhotos() {
         gallery.appendChild(container);
     });
 }
+
 const saveBtn =
 document.getElementById("saveStrip");
 
@@ -355,6 +356,7 @@ if(saveBtn){
         link.click();
     };
 }
+
 if(photos.length >= 4){
 
     alert("✨ Photo strip complete!");
