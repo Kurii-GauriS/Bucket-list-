@@ -2,7 +2,8 @@
 // BUCKET LIST
 // ==========================
 
-function addTask() {
+function addTask() 
+{
 
     const input =
         document.getElementById("bucketInput");
@@ -35,7 +36,8 @@ function addTask() {
 // WISHLIST
 // ==========================
 
-function loadWishlist() {
+function loadWishlist()
+{
 
     const container =
         document.getElementById("wishlistContainer");
@@ -67,7 +69,8 @@ function loadWishlist() {
     });
 }
 
-function deleteDream(index) {
+function deleteDream(index) 
+{
 
     let dreams =
         JSON.parse(
@@ -102,7 +105,8 @@ const captureBtn =
 
 let currentFilter = "none";
 
-if (startBtn) {
+if (startBtn) 
+{
 
     startBtn.addEventListener(
         "click",
@@ -129,11 +133,14 @@ if (startBtn) {
     );
 }
 
-if (captureBtn) {
+if (captureBtn) 
+{
 
-    captureBtn.addEventListener(
+    captureBtn.addEventListener
+    (
         "click",
-        () => {
+        () => 
+        {
 
             canvas.width =
                 video.videoWidth;
@@ -181,7 +188,8 @@ if (captureBtn) {
 // PHOTO GALLERY
 // ==========================
 
-function loadPhotos() {
+function loadPhotos()
+{
 
     const gallery =
         document.getElementById("photoGallery");
@@ -218,7 +226,8 @@ function loadPhotos() {
 // FILTERS
 // ==========================
 
-function setFilter(filter) {
+function setFilter(filter) 
+{
 
     currentFilter = filter;
 
@@ -236,7 +245,8 @@ function setFilter(filter) {
 const musicBtn =
     document.getElementById("musicBtn");
 
-if (musicBtn) {
+if (musicBtn) 
+{
 
     musicBtn.addEventListener(
         "click",
