@@ -86,11 +86,24 @@ function deleteDream(index)
 
     loadWishlist();
 }
+ //CAMERA
+const video = document.getElementById("video");
+const startBtn = document.getElementById("startCamera");
 
-// ==========================
-// CAMERA
-// ==========================
+startBtn.addEventListener("click", async () =>
+    {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+            video: true
+        });
 
+        video.srcObject = stream;
+    } catch (err)
+    {
+        console.error("Camera error:", err);
+        alert("Unable to access camera.");
+    }
+});
 const video =
     document.getElementById("video");
 
@@ -121,7 +134,8 @@ if (startBtn)
 
                 video.srcObject = stream;
 
-            } catch (error) {
+            } catch (error) 
+            {
 
                 console.error(error);
 
@@ -203,7 +217,8 @@ function loadPhotos()
             localStorage.getItem("photos")
         ) || [];
 
-    photos.forEach(photo => {
+    photos.forEach(photo =>
+    {
 
         const img =
             document.createElement("img");
@@ -231,7 +246,8 @@ function setFilter(filter)
 
     currentFilter = filter;
 
-    if (video) {
+    if (video)
+    {
 
         video.style.filter =
             filter;
@@ -250,7 +266,8 @@ if (musicBtn)
 
     musicBtn.addEventListener(
         "click",
-        () => {
+        () => 
+        {
 
             window.open(
                 "https://www.youtube.com/watch?v=k1-FXQjFZJU",
@@ -259,10 +276,6 @@ if (musicBtn)
         }
     );
 }
-
-// ==========================
-// PAGE LOAD
-// ==========================
 
 loadWishlist();
 loadPhotos();
