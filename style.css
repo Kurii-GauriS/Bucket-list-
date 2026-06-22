@@ -361,7 +361,7 @@ button:hover{
     background:
     linear-gradient(
         180deg,
-        #e7f4d8,
+        #db7878,
         #f9d7e8
     );
 
@@ -380,7 +380,7 @@ button:hover{
 
     font-size:3rem;
 
-    color:#4d704d;
+    color:#82a1d1;
 }
 
 .subtitle{
@@ -406,14 +406,14 @@ button:hover{
 
 .scrap-card{
 
-    background:white;
+    background:rgb(0, 0, 0);
 
     padding:15px;
 
     border-radius:20px;
 
     box-shadow:
-    0 5px 15px rgba(0,0,0,.15);
+    0 5px 15px rgba(214, 27, 168, 0.673);
 
     transition:.3s;
 }
