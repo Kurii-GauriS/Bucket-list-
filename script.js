@@ -129,7 +129,7 @@ if (startBtn)
             }
         }
     );
-    
+
 if (captureBtn) 
 {
 
@@ -262,3 +262,15 @@ if (musicBtn)
 
 loadWishlist();
 loadPhotos();
+// filter //
+const ctx = canvas.getContext("2d");
+
+ctx.filter = currentFilter;
+
+ctx.drawImage(
+    video,
+    0,
+    0,
+    canvas.width,
+    canvas.height
+);
