@@ -62,43 +62,36 @@
 <div class="sticker s20">🦊</div>
 <div class="sticker s21">☁️</div>
 <!-- rest of stickers -->
- <!-- Photo Booth -->
+<h2>📷 Photo Strip Booth</h2>
 
-    <h2>📷 Photo Strip Booth</h2>
+<section class="camera-box">
 
-    <section class="camera-box">
+    <video
+        id="video"
+        autoplay
+        playsinline>
+    </video>
 
-        <video id="video" autoplay playsinline></video>
+    <canvas
+        id="canvas"
+        style="display:none;">
+    </canvas>
 
-     <canvas id="canvas"></canvas>
+    <br>
 
-     <button id="startCamera">
-       Click to Start Camera
-      </button>
+    <button id="startCamera">
+        Click to Start Camera
+    </button>
 
-     <button id="capture">
-      Capture
-     </button>
+    <button id="capture">
+        Capture
+    </button>
 
-<div id="photoGallery"></div>
-<video id="video" autoplay playsinline></video>
+    <div id="photoGallery"></div>
 
-<canvas id="canvas" style="display:none;"></canvas>
+</section>
 
-<button id="startCamera">
-    Click to Start Camera
-</button>
-
-<button id="capture">
-    Capture
-</button>
-
-<div id="photoGallery"></div>
-
-    </section>
-    <script src="script.js"></script>
-
-</div>
+<script src="script.js"></script>
 
 </body>
 </html>
