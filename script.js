@@ -86,24 +86,9 @@ function deleteDream(index)
 
     loadWishlist();
 }
- //CAMERA
-const video = document.getElementById("video");
-const startBtn = document.getElementById("startCamera");
 
-startBtn.addEventListener("click", async () =>
-    {
-    try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-            video: true
-        });
+// CAMERA
 
-        video.srcObject = stream;
-    } catch (err)
-    {
-        console.error("Camera error:", err);
-        alert("Unable to access camera.");
-    }
-});
 const video =
     document.getElementById("video");
 
