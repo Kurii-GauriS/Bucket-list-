@@ -1,138 +1,186 @@
-function addTask()
-{
+// ==========================
+// BUCKET LIST
+// ==========================
 
-```
-const input = document.getElementById("bucketInput");
-const task = input.value.trim();
+function addTask() {
 
-if (task === "") return;
+    const input =
+        document.getElementById("bucketInput");
 
-let dreams =
-    JSON.parse(localStorage.getItem("dreams")) || [];
+    if (!input) return;
 
-dreams.push(task);
+    const task =
+        input.value.trim();
 
-localStorage.setItem(
-    "dreams",
-    JSON.stringify(dreams)
-);
+    if (task === "") return;
 
-input.value = "";
+    let dreams =
+        JSON.parse(
+            localStorage.getItem("dreams")
+        ) || [];
 
-alert("Dream Added! ✨");
-```
+    dreams.push(task);
 
+    localStorage.setItem(
+        "dreams",
+        JSON.stringify(dreams)
+    );
+
+    input.value = "";
+
+    alert("✨ Dream Added!");
 }
 
-function loadWishlist() {}
+// ==========================
+// WISHLIST
+// ==========================
 
-```
-const container =
-    document.getElementById("wishlistContainer");
+function loadWishlist() {
 
-if (!container) return;
+    const container =
+        document.getElementById("wishlistContainer");
 
-container.innerHTML = "";
+    if (!container) return;
 
-let dreams =
-    JSON.parse(localStorage.getItem("dreams")) || [];
+    container.innerHTML = "";
 
-dreams.forEach((dream, index) => {
+    let dreams =
+        JSON.parse(
+            localStorage.getItem("dreams")
+        ) || [];
 
-    const card =
-        document.createElement("div");
+    dreams.forEach((dream, index) => {
 
-    card.classList.add("wish-card");
-    card.textContent = dream;
+        const card =
+            document.createElement("div");
+
+        card.classList.add("wish-card");
+
+        card.innerHTML = `
+            ${dream}
+            <button onclick="deleteDream(${index})">
+                ❌
+            </button>
+        `;
+
+        container.appendChild(card);
+    });
 }
 
-loadWishlist();
+function deleteDream(index) {
+
+    let dreams =
+        JSON.parse(
+            localStorage.getItem("dreams")
+        ) || [];
+
+    dreams.splice(index, 1);
+
+    localStorage.setItem(
+        "dreams",
+        JSON.stringify(dreams)
+    );
+
+    loadWishlist();
+}
+
+// ==========================
+// CAMERA
+// ==========================
 
 const video =
-document.getElementById("video");
+    document.getElementById("video");
+
+const canvas =
+    document.getElementById("canvas");
 
 const startBtn =
-document.getElementById("startCamera");
+    document.getElementById("startCamera");
+
+const captureBtn =
+    document.getElementById("capture");
+
+let currentFilter = "none";
 
 if (startBtn) {
 
-```
-startBtn.onclick = async () => {
+    startBtn.addEventListener(
+        "click",
+        async () => {
 
-    const stream =
-        await navigator.mediaDevices.getUserMedia({
-            video: true
-        });
+            try {
 
-    video.srcObject = stream;
-};
-```
+                const stream =
+                    await navigator.mediaDevices.getUserMedia({
+                        video: true
+                    });
 
+                video.srcObject = stream;
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert(
+                    "Camera access denied 📸"
+                );
+            }
+        }
+    );
 }
-
-const captureBtn =
-document.getElementById("capture");
-
-const canvas =
-document.getElementById("canvas");
 
 if (captureBtn) {
 
-```
-captureBtn.onclick = () => {
+    captureBtn.addEventListener(
+        "click",
+        () => {
 
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
+            canvas.width =
+                video.videoWidth;
 
-    const ctx =
-        canvas.getContext("2d");
+            canvas.height =
+                video.videoHeight;
 
-    ctx.drawImage(
-        video,
-        0,
-        0
+            const ctx =
+                canvas.getContext("2d");
+
+            ctx.filter =
+                currentFilter;
+
+            ctx.drawImage(
+                video,
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+            const image =
+                canvas.toDataURL(
+                    "image/png"
+                );
+
+            let photos =
+                JSON.parse(
+                    localStorage.getItem("photos")
+                ) || [];
+
+            photos.push(image);
+
+            localStorage.setItem(
+                "photos",
+                JSON.stringify(photos)
+            );
+
+            loadPhotos();
+        }
     );
-
-    const image =
-        canvas.toDataURL("image/png");
-
-    const img =
-        document.createElement("img");
-
-    img.src = image;
-    img.style.width = "150px";
-
-    document.body.appendChild(img);
-};
-```
-
 }
 
-const musicBtn =
-document.getElementById("musicBtn");
+// ==========================
+// PHOTO GALLERY
+// ==========================
 
-if (musicBtn) {
-
-```
-musicBtn.addEventListener("click", () => {
-
-    window.open(
-        "https://www.youtube.com/watch?v=k1-FXQjFZJU",
-        "_blank"
-    );
-});
-``
-const image = canvas.toDataURL("image/png");
-let photos =
-    JSON.parse(localStorage.getItem("photos")) || [];
-
-photos.push(image);
-
-localStorage.setItem(
-    "photos",
-    JSON.stringify(photos)
-);
-const image = canvas.toDataURL("image/png");
 function loadPhotos() {
 
     const gallery =
@@ -143,45 +191,68 @@ function loadPhotos() {
     gallery.innerHTML = "";
 
     let photos =
-        JSON.parse(localStorage.getItem("photos")) || [];
+        JSON.parse(
+            localStorage.getItem("photos")
+        ) || [];
 
     photos.forEach(photo => {
 
-        let img =
+        const img =
             document.createElement("img");
 
         img.src = photo;
+
         img.width = 150;
+
+        img.style.borderRadius =
+            "15px";
+
+        img.style.margin =
+            "10px";
 
         gallery.appendChild(img);
     });
 }
 
-loadPhotos();
-let currentFilter = "none";
+// ==========================
+// FILTERS
+// ==========================
 
 function setFilter(filter) {
 
     currentFilter = filter;
 
-    video.style.filter = filter;
-}
-let currentFilter = "none";
+    if (video) {
 
-function setFilter(filter) {
-    currentFilter = filter;
-
-    const video = document.getElementById("video");
-
-    if(video){
-        video.style.filter = filter;
+        video.style.filter =
+            filter;
     }
 }
 
-ctx.filter = currentFilter;
+// ==========================
+// MUSIC BUTTON
+// ==========================
 
-ctx.drawImage(
-    video,
-    0,
-    0
-);
+const musicBtn =
+    document.getElementById("musicBtn");
+
+if (musicBtn) {
+
+    musicBtn.addEventListener(
+        "click",
+        () => {
+
+            window.open(
+                "https://www.youtube.com/watch?v=k1-FXQjFZJU",
+                "_blank"
+            );
+        }
+    );
+}
+
+// ==========================
+// PAGE LOAD
+// ==========================
+
+loadWishlist();
+loadPhotos();
