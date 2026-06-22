@@ -104,7 +104,6 @@ const captureBtn =
 let currentFilter = "none";
 
 if (startBtn) 
-{
 
     startBtn.addEventListener(
         "click",
@@ -130,8 +129,7 @@ if (startBtn)
             }
         }
     );
-}
-
+    
 if (captureBtn) 
 {
 
