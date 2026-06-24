@@ -130,6 +130,24 @@ button:hover{
     border-radius:20px;
     box-shadow:0 8px 20px rgba(157, 33, 33, 0.2);
 }
+.music-player{
+    margin:50px auto;
+    text-align:left;
+}
+
+.music-player iframe{
+    border-radius:20px;
+    box-shadow:0 8px 20px rgba(157, 33, 33, 0.2);
+}
+.music-player{
+    margin:50px auto;
+    text-align:right;
+}
+
+.music-player iframe{
+    border-radius:20px;
+    box-shadow:0 8px 20px rgba(157, 33, 33, 0.2);
+}
 .sticker{
     position:fixed;
     font-size:2rem;
