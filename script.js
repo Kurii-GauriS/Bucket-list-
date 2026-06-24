@@ -1,12 +1,12 @@
 // ==========================
-// BUCKET LIST
+// WISH LIST
 // ==========================
 
 function addTask() 
 {
 
     const input =
-        document.getElementById("bucketInput");
+        document.getElementById("WishInput");
 
     if (!input) return;
 
@@ -17,19 +17,19 @@ function addTask()
 
     let dreams =
         JSON.parse(
-            localStorage.getItem("dreams")
+            localStorage.getItem("wishes")
         ) || [];
 
     dreams.push(task);
 
     localStorage.setItem(
-        "dreams",
-        JSON.stringify(dreams)
+        "whishes",
+        JSON.stringify(loadWishlist)
     );
 
     input.value = "";
 
-    alert("✨ Dream Added!");
+    alert("✨Wish Added!");
 }
 
 // ==========================
@@ -48,7 +48,7 @@ function loadWishlist()
 
     let dreams =
         JSON.parse(
-            localStorage.getItem("dreams")
+            localStorage.getItem("whishes")
         ) || [];
 
     dreams.forEach((dream, index) => {
