@@ -265,10 +265,28 @@ if (musicBtn) {
                 "https://www.youtube.com/watch?v=k1-FXQjFZJU",
                 "_blank"
             );
+        }  
+    );
+}
+
+if (musicBtn) {
+
+    musicBtn.addEventListener(
+        "click",
+        () => {
             window.open(
                 "https://www.youtube.com/embed/x-kl7fzEmaY",
                 "_blank"
             );
+        }    
+    );
+}
+
+if (musicBtn) {
+
+    musicBtn.addEventListener(
+        "click",
+        () => {
              window.open(
                 "https://www.youtube.com/embed/KxrJ_1iYFyU",
                 "_blank"
@@ -276,6 +294,7 @@ if (musicBtn) {
         }
     );
 }
+
 
 // ==========================
 // LOAD
