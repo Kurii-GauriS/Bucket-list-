@@ -266,11 +266,11 @@ if (musicBtn) {
                 "_blank"
             );
             window.open(
-                "",
+                "https://www.youtube.com/embed/x-kl7fzEmaY",
                 "_blank"
             );
-            window.open(
-                "",
+             window.open(
+                "https://www.youtube.com/embed/KxrJ_1iYFyU",
                 "_blank"
             );
         }
