@@ -265,6 +265,14 @@ if (musicBtn) {
                 "https://www.youtube.com/watch?v=k1-FXQjFZJU",
                 "_blank"
             );
+            window.open(
+                "",
+                "_blank"
+            );
+            window.open(
+                "",
+                "_blank"
+            );
         }
     );
 }
