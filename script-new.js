@@ -249,7 +249,7 @@ function setFilter(filter) {
 }
 
 // ==========================
-// MUSIC
+// MUSIC 1
 // ==========================
 
 const musicBtn =
@@ -268,6 +268,12 @@ if (musicBtn) {
         }  
     );
 }
+// ==========================
+// MUSIC 2
+// ==========================
+
+const musicBtn =
+    document.getElementById("musicBtn");
 
 if (musicBtn) {
 
@@ -281,6 +287,12 @@ if (musicBtn) {
         }    
     );
 }
+// ==========================
+// MUSIC 3
+// ==========================
+
+const musicBtn =
+    document.getElementById("musicBtn");
 
 if (musicBtn) {
 
