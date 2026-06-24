@@ -360,6 +360,6 @@ if(saveBtn){
 if(photos.length >= 4){
 
     alert("✨ Photo strip complete!");
-
-    return;
+    
+     return;
 }
