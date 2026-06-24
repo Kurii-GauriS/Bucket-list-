@@ -121,33 +121,30 @@ button:hover{
 .polaroid{
     position:relative;
 }
-.music-player{
-    margin:50px auto;
-    text-align:center;
+.playlist-grid{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:30px;
+
+    margin-top:40px;
 }
 
-.music-player iframe{
-    border-radius:20px;
-    box-shadow:0 8px 20px rgba(157, 33, 33, 0.2);
-}
 .music-player{
-    margin:50px auto;
-    text-align:left;
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
 }
 
-.music-player iframe{
-    border-radius:20px;
-    box-shadow:0 8px 20px rgba(157, 33, 33, 0.2);
-}
-.music-player{
-    margin:50px auto;
-    text-align:right;
-}
-
-.music-player iframe{
-    border-radius:20px;
-    box-shadow:0 8px 20px rgba(157, 33, 33, 0.2);
-}
 .sticker{
     position:fixed;
     font-size:2rem;
