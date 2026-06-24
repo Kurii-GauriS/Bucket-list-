@@ -86,101 +86,6 @@ function deleteDream(index)
 
     loadWishlist();
 }
-
-// CAMERA
-
-const video =
-    document.getElementById("video");
-
-const canvas =
-    document.getElementById("canvas");
-
-const startBtn =
-    document.getElementById("startCamera");
-
-const captureBtn =
-    document.getElementById("capture");
-
-let currentFilter = "none";
-
-if (startBtn) 
-
-    startBtn.addEventListener(
-        "click",
-        async () => {
-
-            try {
-
-                const stream =
-                    await navigator.mediaDevices.getUserMedia({
-                        video: true
-                    });
-
-                video.srcObject = stream;
-
-            } catch (error) 
-            {
-
-                console.error(error);
-
-                alert(
-                    "Camera access denied 📸"
-                );
-            }
-        }
-    );
-
-if (captureBtn) 
-{
-
-    captureBtn.addEventListener
-    (
-        "click",
-        () => 
-        {
-
-            canvas.width =
-                video.videoWidth;
-
-            canvas.height =
-                video.videoHeight;
-
-            const ctx =
-                canvas.getContext("2d");
-
-            ctx.filter =
-                currentFilter;
-
-            ctx.drawImage(
-                video,
-                0,
-                0,
-                canvas.width,
-                canvas.height
-            );
-
-            const image =
-                canvas.toDataURL(
-                    "image/png"
-                );
-
-            let photos =
-                JSON.parse(
-                    localStorage.getItem("photos")
-                ) || [];
-
-            photos.push(image);
-
-            localStorage.setItem(
-                "photos",
-                JSON.stringify(photos)
-            );
-
-            loadPhotos();
-        }
-    );
-}
-
 // ==========================
 // PHOTO GALLERY
 // ==========================
@@ -263,106 +168,6 @@ if (musicBtn)
 loadWishlist();
 loadPhotos();
 
-captureBtn.addEventListener("click", () => {
-
-    console.log("Width:", video.videoWidth);
-    console.log("Height:", video.videoHeight);
-
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-
-    const ctx = canvas.getContext("2d");
-
-    ctx.drawImage(
-        video,
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
-
-    const image =
-        canvas.toDataURL("image/png");
-
-    console.log(image);
-
-});
-function loadPhotos() {
-
-    const gallery =
-        document.getElementById("photoGallery");
-
-    if (!gallery) return;
-
-    gallery.innerHTML = "";
-
-    let photos =
-        JSON.parse(
-            localStorage.getItem("photos")
-        ) || [];
-
-    photos.forEach((photo, index) => {
-
-        const container =
-            document.createElement("div");
-
-        container.classList.add("photo-card");
-
-        const img =
-            document.createElement("img");
-
-        img.src = photo;
-
-        const delBtn =
-            document.createElement("button");
-
-        delBtn.innerHTML = "🗑️";
-
-        delBtn.onclick = () => {
-
-            photos.splice(index, 1);
-
-            localStorage.setItem(
-                "photos",
-                JSON.stringify(photos)
-            );
-
-            loadPhotos();
-        };
-
-        container.appendChild(img);
-        container.appendChild(delBtn);
-
-        gallery.appendChild(container);
-    });
-}
-
-const saveBtn =
-document.getElementById("saveStrip");
-
-if(saveBtn){
-
-    saveBtn.onclick = () => {
-
-        const link =
-            document.createElement("a");
-
-        link.download =
-            "SKZ-Photo-Strip.png";
-
-        link.href =
-            canvas.toDataURL("image/png");
-
-        link.click();
-    };
-}
-
-if(photos.length >= 4){
-
-    alert("✨ Photo strip complete!");
-
-     return;
-}
 // ==========================
 // CAMERA
 // ==========================
@@ -422,9 +227,15 @@ if (captureBtn) {
             canvas.width,
             canvas.height
         );
+         loadPhotos();
+         let photos =
+          JSON.parse(localStorage.getItem("photos")) || [];
 
-        const image =
-            canvas.toDataURL("image/png");
+          if(photos.length >= 4){
+
+        alert("✨ Photo strip complete!");
+}
+    
 
         let photos =
             JSON.parse(
@@ -495,5 +306,3 @@ function loadPhotos() {
         gallery.appendChild(card);
     });
 }
-
-loadPhotos();
