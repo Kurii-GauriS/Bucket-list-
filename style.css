@@ -455,3 +455,18 @@ button:hover{
 
     margin-bottom:20px;
 }
+.photo-card{
+    display:inline-block;
+    margin:10px;
+}
+
+.photo-card img{
+    width:150px;
+    border-radius:15px;
+}
+
+.photo-card button{
+    display:block;
+    margin:auto;
+    margin-top:8px;
+}

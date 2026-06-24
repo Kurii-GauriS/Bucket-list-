@@ -360,6 +360,140 @@ if(saveBtn){
 if(photos.length >= 4){
 
     alert("✨ Photo strip complete!");
-    
+
      return;
 }
+// ==========================
+// CAMERA
+// ==========================
+
+const video = document.getElementById("video");
+const canvas = document.getElementById("canvas");
+const startBtn = document.getElementById("startCamera");
+const captureBtn = document.getElementById("capture");
+
+// Start Camera
+
+if (startBtn) {
+
+    startBtn.addEventListener("click", async () => {
+
+        try {
+
+            const stream =
+                await navigator.mediaDevices.getUserMedia({
+                    video: true
+                });
+
+            video.srcObject = stream;
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert("📸 Camera access denied!");
+        }
+    });
+}
+
+// Capture Photo
+
+if (captureBtn) {
+
+    captureBtn.addEventListener("click", () => {
+
+        if (!video.videoWidth) {
+
+            alert("Start camera first! 📸");
+
+            return;
+        }
+
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+
+        const ctx =
+            canvas.getContext("2d");
+
+        ctx.drawImage(
+            video,
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+        const image =
+            canvas.toDataURL("image/png");
+
+        let photos =
+            JSON.parse(
+                localStorage.getItem("photos")
+            ) || [];
+
+        photos.push(image);
+
+        localStorage.setItem(
+            "photos",
+            JSON.stringify(photos)
+        );
+
+        loadPhotos();
+    });
+}
+
+// ==========================
+// LOAD PHOTOS
+// ==========================
+
+function loadPhotos() {
+
+    const gallery =
+        document.getElementById("photoGallery");
+
+    if (!gallery) return;
+
+    gallery.innerHTML = "";
+
+    let photos =
+        JSON.parse(
+            localStorage.getItem("photos")
+        ) || [];
+
+    photos.forEach((photo, index) => {
+
+        const card =
+            document.createElement("div");
+
+        card.classList.add("photo-card");
+
+        const img =
+            document.createElement("img");
+
+        img.src = photo;
+
+        const delBtn =
+            document.createElement("button");
+
+        delBtn.innerHTML = "🗑️";
+
+        delBtn.onclick = () => {
+
+            photos.splice(index, 1);
+
+            localStorage.setItem(
+                "photos",
+                JSON.stringify(photos)
+            );
+
+            loadPhotos();
+        };
+
+        card.appendChild(img);
+        card.appendChild(delBtn);
+
+        gallery.appendChild(card);
+    });
+}
+
+loadPhotos();
