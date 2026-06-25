@@ -298,6 +298,121 @@ function setFilter(filter) {
             filter;
     }
 }
+function initCamera() {
+  const video = $("#camera");
+  const select = $("#filter-select");
+  const message = $("#camera-message");
+
+  select.addEventListener("change", () => {
+    video.className = select.value === "none" ? "" : `filter-${select.value}`;
+  });
+
+  $("#start-camera").addEventListener("click", async () => {
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+      video.srcObject = stream;
+      message.textContent = "Camera is ready. Capture a tiny memory.";
+      toast("Camera started.");
+    } catch (error) {
+      message.textContent = "Camera could not start. Try opening this page from localhost and allow camera access.";
+      toast("Camera access was blocked or unavailable.");
+    }
+  });
+
+  $("#capture-photo").addEventListener("click", () => {
+    if (!video.videoWidth) {
+      toast("Start the camera before capturing.");
+      return;
+    }
+    const canvas = $("#capture-canvas");
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    const ctx = canvas.getContext("2d");
+    applyCanvasFilter(ctx, select.value);
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    state.photos.unshift({ id: `${Date.now()}`, src: canvas.toDataURL("image/jpeg", .9), created: Date.now() });
+    state.photos = state.photos.slice(0, 12);
+    saveState();
+    renderPhotos();
+    unlock("first-photo", "Badge unlocked: Photo Strip Starter");
+  });
+
+  $("#download-strip").addEventListener("click", downloadStrip);
+}
+
+function applyCanvasFilter(ctx, filter) {
+  ctx.filter = {
+    soft: "saturate(1.1) sepia(.08) hue-rotate(315deg) brightness(1.08)",
+    mint: "saturate(1.1) hue-rotate(65deg) brightness(1.05)",
+    bw: "grayscale(1) contrast(1.08)",
+    warm: "sepia(.22) saturate(1.25) brightness(1.05)"
+  }[filter] || "none";
+}
+
+function renderPhotos() {
+  const strip = $("#photo-strip");
+  strip.innerHTML = "";
+  const photos = state.photos.slice(0, 4);
+  if (!photos.length) {
+    strip.innerHTML = `<p class="empty">Your photo strip is blank for now.</p>`;
+    return;
+  }
+  photos.forEach(photo => {
+    const item = document.createElement("div");
+    item.className = "strip-photo";
+    item.innerHTML = `<img src="${photo.src}" alt="Captured photo"><button type="button">Delete</button>`;
+    $("button", item).addEventListener("click", () => {
+      state.photos = state.photos.filter(saved => saved.id !== photo.id);
+      saveState();
+      renderPhotos();
+    });
+    strip.append(item);
+  });
+}
+
+async function downloadStrip() {
+  const photos = state.photos.slice(0, 4);
+  if (!photos.length) {
+    toast("Capture at least one photo first.");
+    return;
+  }
+  const canvas = document.createElement("canvas");
+  const width = 720;
+  const photoHeight = 430;
+  canvas.width = width;
+  canvas.height = photos.length * photoHeight + 170;
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#fffdf7";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "#f8b8cc";
+  ctx.fillRect(0, 0, canvas.width, 44);
+  ctx.fillStyle = "#51404a";
+  ctx.font = "700 38px Nunito";
+  ctx.fillText("cozy photo strip", 40, canvas.height - 58);
+
+  for (let index = 0; index < photos.length; index += 1) {
+    const img = await loadImage(photos[index].src);
+    const y = 70 + index * photoHeight;
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(44, y - 22, width - 88, photoHeight - 28);
+    ctx.drawImage(img, 68, y, width - 136, photoHeight - 88);
+  }
+
+  const link = document.createElement("a");
+  link.href = canvas.toDataURL("image/png");
+  link.download = "cozy-photo-strip.png";
+  link.click();
+  toast("Photo strip downloaded.");
+}
+
+function loadImage(src) {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.src = src;
+  });
+}
+
 
 // ==========================
 // MUSIC BUTTON
