@@ -129,7 +129,7 @@ button:hover{
 
     justify-content:center;
 
-    gap:30px;
+    gap:40px;
 
     margin-top:40px;
 }
@@ -267,273 +267,29 @@ button:hover{
     margin-top:80px;
     color:#ffb6d9;
 }
-
-.wishlist-section{
-
-    background:
-    linear-gradient(
-        135deg,
-        #1a1a1a,
-        #2d2d2d
-    );
-
-    padding:40px;
-
-    border-radius:25px;
-
-    max-width:900px;
-
-    margin:40px auto;
-
-    box-shadow:
-    0 10px 30px rgba(0,0,0,.3);
+.big img{
+    height:300px;
 }
-
-.wish-card{
-
-    background:#ffcae3;
-
-    color:#222;
-
-    padding:15px;
-
-    margin:15px 0;
-
-    border-radius:15px;
-
-    font-size:18px;
-
-    transition:.3s;
-}
-
-.wish-card:hover{
-
-    transform:translateX(10px);
-
-    background:#ffc0dd;
-}
-.bucket-container{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    margin:20px;
-}
-
-#bucketInput{
-    border:none;
-    border-radius:20px;
-    padding:12px 18px;
-    background:#f0abce;
-    width:300px;
-}
-.sticker {
-    pointer-events: none;
-    z-index: 0;
-}
-.sticker {
-    opacity: 1;
-    z-index: -1;
-}
-.wish-card{
-    display:flex;
-    justify-content:space-between;
-    align-items:right baseline;
-}
-#video {
-    width: 300px;
-    height: 300px;
-    border: 2px solid #030202;
-}
-#photoGallery{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:10px;
-}
-.photo-strip{
-    background:white;
-    padding:15px;
-    border-radius:20px;
-    width:220px;
-
-    box-shadow:
-    0 5px 15px rgba(0,0,0,.2);
-}
-
-.photo-strip img{
-    width:100%;
-    margin-bottom:10px;
-    border-radius:10px;
-}
-.member-link{
-    text-decoration:none;
-    color:inherit;
-}
-/* ==========================
-   BANG CHAN BOOK
-========================== */
-
-.bangchan-page{
-
-    background:
-    linear-gradient(
-        180deg,
-        #db7878,
-        #f9d7e8
-    );
-
-    min-height:100vh;
-
-    text-align:center;
-
-    padding:30px;
-}
-
-.bangchan-page h1{
-
-    font-family:
-    "Petit Formal Script",
-    cursive;
-
-    font-size:3rem;
-
-    color:#1b0b19;
-}
-
-.subtitle{
-
-    font-size:1.2rem;
-
-    margin-bottom:30px;
-}
-
-.memory-book{
-
+.gallery{
     display:grid;
-
-    grid-template-columns:
-    repeat(2,1fr);
-
-    gap:30px;
-
-    max-width:900px;
-
+    grid-template-columns: 2fr 1fr 1fr;
+    gap:15px;
+    max-width:1200px;
     margin:auto;
+    padding:20px;
 }
-
-.scrap-card{
-
-    background:rgb(0, 0, 0);
-
-    padding:15px;
-
-    border-radius:20px;
-
-    box-shadow:
-    0 5px 15px rgba(214, 27, 168, 0.673);
-
-    transition:.3s;
-}
-
-.scrap-card:hover{
-
-    transform:
-    rotate(2deg)
-    scale(1.03);
-}
-
-.scrap-card img{
-
+.polaroid img{
     width:100%;
-
-    border-radius:15px;
+    height:200px;
+    object-fit:cover;
+}
+.gallery{
+    columns:3;
+    column-gap:20px;
 }
 
-.stickers{
-
-    margin-top:40px;
-
-    font-size:2rem;
-}
-
-.back-btn{
-
+.polaroid{
     display:inline-block;
-
-    background:#f9d7e8;
-
-    padding:12px 20px;
-
-    border-radius:20px;
-
-    text-decoration:none;
-
-    color:black;
-
+    width:100%;
     margin-bottom:20px;
-}
-.photo-card{
-    display:inline-block;
-    margin:10px;
-}
-
-.photo-card img{
-    width:150px;
-    border-radius:15px;
-}
-
-.photo-card button{
-    display:block;
-    margin:auto;
-    margin-top:8px;
-}
-.photo-grid{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(4,1fr);
-
-    gap:12px;
-}
-
-.photo-grid img{
-
-    width:100%;
-
-    aspect-ratio:1;
-
-    object-fit:cover;
-
-    border-radius:10px;
-}
-.photo-grid{
-
-    display:grid;
-
-    grid-template-columns:
-    repeat(4,1fr);
-
-    gap:12px;
-}
-
-.photo-grid img{
-
-    width:80%;
-
-    aspect-ratio:1;
-
-    object-fit:cover;
-
-    border-radius:10px;
-}
-.photo-grid img{
-
-    width:80%;
-
-    aspect-ratio:1;
-
-    object-fit:cover;
-
-    border-radius:10px;
 }
