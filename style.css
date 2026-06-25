@@ -535,3 +535,22 @@ button:hover{
 
     border-radius:10px;
 }
+.gallery{
+    display: flex;
+    justify-content: center; /* center horizontally */
+    margin-top: 30px;
+}
+
+.polaroid{
+    text-align: center;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.polaroid img{
+    width: 400px;      /* adjust size */
+    max-width: 100%;   /* responsive */
+    height: auto;      /* keeps proportions */
+    display: block;
+}
