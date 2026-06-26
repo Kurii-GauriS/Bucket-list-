@@ -1,47 +1,225 @@
 <!DOCTYPE html>
 <html>
-<head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<h2>📸Photo Booth</h2>
+    <button><h2>📸Photo Booth</h2></button>
 
 <div id="photoGallery"></div>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <nav class="navbar">
+<nav class="navbar">
     <a href="index.html">🏠 Home</a>
     <a href="wishlist.html">🖤 Wishlist</a>
-    <a href="Photo.html">📸 Photo Booth</a>
     <a href="PC.html">𐙚DO IT 𐙚 Cards</a>
     <a href="do-it-album.html">𐙚𝔇𝔬 𝔦𝔱𐙚ALBUM</a>
 </nav>
-   <div class="filters">
-    <button onclick="setFilter('none')">
-    Normal
-</button>
+<title>𐙚Polaroid Photo Strip𐙚</title>
+<style>
+body {
+    font-family: "Petit Formal Script", cursive;
+    cursor: url("images/star-cursor.png"), auto;
+    background: linear-gradient(135deg, #80c86a, #eb9abc);
+    text-align: center;
+    padding: 20px;
+    min-height: 100vh;
+}
 
-<button onclick="setFilter('grayscale(100%)')">
-    B&W
-</button>
+h1 {
+    margin-bottom: 10px;
+}
 
-<button onclick="setFilter('sepia(100%)')">
-    Vintage
-</button>
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+}
 
-<button onclick="setFilter('brightness(120%)')">
-    Bright
-</button>
+.video-container {
+    position: relative;
+}
 
-<button onclick="setFilter('contrast(150%)')">
-    Contrast
-</button>
+video {
+    border: 2px solid #333;
+    border-radius: 8px;
+    max-width: 100%;
+}
+
+#countdown {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    display: none;
+}
+
+canvas {
+    display: block;
+    border: 5px solid white;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+#startBtn {
+    background: #28a745;
+    color: white;
+}
+
+#downloadBtn {
+    background: #007bff;
+    color: white;
+}
+
+#note {
+    padding: 5px;
+    width: 200px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+</style>
+</head>
+<body>
+
+<h1>📸 𐙚Polaroid Photo Strip𐙚</h1>
+
+<input type="text" id="note" placeholder="Enter your note...">
+<br>
+<button id="startBtn">Start 4-Photo Capture</button>
+<button id="downloadBtn" disabled>Download Strip</button>
+
+<div class="container">
+    <!-- Camera on Left -->
+    <div class="video-container">
+        <video id="video" autoplay playsinline></video>
+        <div id="countdown"></div>
+    </div>
+
+    <!-- Strip on Right -->
+    <canvas id="stripCanvas"></canvas>
 </div>
-    
+
+<script>
+const video = document.getElementById('video');
+const stripCanvas = document.getElementById('stripCanvas');
+const startBtn = document.getElementById('startBtn');
+const downloadBtn = document.getElementById('downloadBtn');
+const noteInput = document.getElementById('note');
+const countdownEl = document.getElementById('countdown');
+
+let photos = [];
+
+// Start camera
+async function startCamera() {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+    } catch (err) {
+        alert("Camera access denied or unavailable: " + err.message);
+    }
+}
+
+// Countdown before capture
+function showCountdown(seconds) {
+    return new Promise(resolve => {
+        let count = seconds;
+        countdownEl.style.display = "block";
+        countdownEl.textContent = count;
+        const interval = setInterval(() => {
+            count--;
+            if (count > 0) {
+                countdownEl.textContent = count;
+            } else {
+                clearInterval(interval);
+                countdownEl.style.display = "none";
+                resolve();
+            }
+        }, 1000);
+    });
+}
+
+// Capture a single frame
+function captureFrame() {
+    const tempCanvas = document.createElement('canvas');
+    tempCanvas.width = video.videoWidth;
+    tempCanvas.height = video.videoHeight;
+    const ctx = tempCanvas.getContext('2d');
+    ctx.drawImage(video, 0, 0, tempCanvas.width, tempCanvas.height);
+    return tempCanvas;
+}
+
+// Create the 4-photo strip
+function createStrip() {
+    const photoWidth = 300;
+    const photoHeight = 200;
+    const noteHeight = 50;
+    const spacing = 10;
+    const totalHeight = (photoHeight * 4) + (spacing * 3) + noteHeight;
+
+    stripCanvas.width = photoWidth;
+    stripCanvas.height = totalHeight;
+
+    const ctx = stripCanvas.getContext('2d');
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, stripCanvas.width, stripCanvas.height);
+
+    // Draw each photo
+    photos.forEach((photo, index) => {
+        ctx.drawImage(photo, 0, index * (photoHeight + spacing), photoWidth, photoHeight);
+    });
+
+    // Draw note
+    ctx.fillStyle = "black";
+    ctx.font = "16px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText(noteInput.value || "My Polaroid Strip", photoWidth / 2, totalHeight - (noteHeight / 2) + 5);
+}
+
+// Handle 4-photo capture sequence with countdown
+startBtn.addEventListener('click', async () => {
+    photos = [];
+    startBtn.disabled = true;
+    downloadBtn.disabled = true;
+
+    for (let i = 0; i < 4; i++) {
+        await showCountdown(3); // 3-second countdown
+        photos.push(captureFrame());
+    }
+
+    createStrip();
+    downloadBtn.disabled = false;
+    startBtn.disabled = false;
+});
+
+// Download the strip
+downloadBtn.addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.download = 'polaroid_strip.png';
+    link.href = stripCanvas.toDataURL('image/png');
+    link.click();
+});
+
+// Start camera on load
+startCamera();
+</script>
     <!-- floating stickers -->
 <div class="sticker heart1">💖</div>
 <div class="sticker s2">💚</div>
@@ -66,36 +244,5 @@
 <div class="sticker s21">☁️</div>
 <div class="sticker s23">➶ ⋆ 𝑺𝑻𝑨𝒀 ⋆ ☄.</div>
 <!-- rest of stickers -->
-<h2>📷 Photo Strip Booth</h2>
-
-<section class="camera-box">
-
-    <video
-        id="video"
-        autoplay
-        playsinline>
-    </video>
-
-    <canvas
-        id="canvas"
-        style="display:none;">
-    </canvas>
-    <br>
-    <button id="startCamera">
-        Click to Start Camera
-    </button>
-
-    <button id="capture">
-        Capture
-    </button>
-    <button id="saveStrip">
-    💾 Save Strip
-</button>
-    <div id="photoGallery"></div>
-
-</section>
-
-<script src="script.js"></script>
-
 </body>
 </html>

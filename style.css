@@ -276,69 +276,6 @@ button:hover{
 .navbar a:hover{
     transform:translateY(-3px);
 }
-.wishlist-title{
-    margin-top:80px;
-    color:#ffb6d9;
-}
-
-.wishlist-section{
-
-    background:
-    linear-gradient(
-        135deg,
-        #1a1a1a,
-        #2d2d2d
-    );
-
-    padding:40px;
-
-    border-radius:25px;
-
-    max-width:900px;
-
-    margin:40px auto;
-
-    box-shadow:
-    0 10px 30px rgba(0,0,0,.3);
-}
-
-.wish-card{
-
-    background:#ffcae3;
-
-    color:#222;
-
-    padding:15px;
-
-    margin:15px 0;
-
-    border-radius:15px;
-
-    font-size:18px;
-
-    transition:.3s;
-}
-
-.wish-card:hover{
-
-    transform:translateX(10px);
-
-    background:#ffc0dd;
-}
-.bucket-container{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    margin:20px;
-}
-
-#bucketInput{
-    border:none;
-    border-radius:20px;
-    padding:12px 18px;
-    background:#f0abce;
-    width:300px;
-}
 .sticker {
     pointer-events: none;
     z-index: 0;
@@ -346,11 +283,6 @@ button:hover{
 .sticker {
     opacity: 1;
     z-index: -1;
-}
-.wish-card{
-    display:flex;
-    justify-content:space-between;
-    align-items:right baseline;
 }
 #video {
     width: 300px;
@@ -382,6 +314,7 @@ button:hover{
     text-decoration:none;
     color:inherit;
 }
+
 /* ==========================
    BANG CHAN BOOK
 ========================== */
@@ -467,23 +400,6 @@ button:hover{
     margin-top:40px;
 
     font-size:2rem;
-}
-
-.back-btn{
-
-    display:inline-block;
-
-    background:#f9d7e8;
-
-    padding:12px 20px;
-
-    border-radius:20px;
-
-    text-decoration:none;
-
-    color:black;
-
-    margin-bottom:20px;
 }
 .photo-card{
     display:inline-block;

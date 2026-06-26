@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My BucketList</title>
     <link rel="stylesheet" href="style.css">
+    <button><h1>🖤Wishlist💌</h1></button>
 </head>
 <nav class="navbar">
     <a href="index.html">🏠 Home</a>
-    <a href="wishlist.html">🖤 Wishlist</a>
     <a href="Photo.html">📸 Photo Booth</a>
     <a href="PC.html">𐙚DO IT 𐙚 Cards</a>
     <a href="do-it-album.html">𐙚𝔇𝔬 𝔦𝔱𐙚ALBUM</a>
@@ -17,25 +17,153 @@
 <body class="wish list">
     <div id="wishlistContainer">
     </div>
-    <button onclick="addTask()">
-    🎀 Add Dream 🎀
-</button>
-     <input
-     type="text"
-        id="dreamInput"
-        placeholder="Add a wishlist dream...">
-        <ul id="dreamList"></ul>
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
 
-<h2 class="wishlist-title">🖤 Wishlist 💗</h2>
+<style>
+body {
+    font-family: "Petit Formal Script", cursive;
+    cursor: url("images/star-cursor.png"), auto;
+    background: linear-gradient(135deg, #80c86a, #eb9abc);
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+}
 
-<section class="wishlist-section">
+h1 {
+    color: #333;
+}
 
-    <div class="wish-card">🎫 Attend a SKZ Concert</div>
-    <div class="wish-card">📸 Take Photobooth Pictures</div>
-    <div class="wish-card">✈️ Travel to Korea</div>
-    <div class="wish-card">💿 Own Every Album</div>
-    <div class="wish-card">📸 See Stray Kids at a Fan Meeting</div>
-    <div class="wish-card"> 🌸Wearing a Hanbok</div>
+#wishInput {
+    padding: 10px;
+    width: 60%;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    margin-left: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+#addBtn {
+    background: #28a745;
+    color: white;
+}
+
+#wishList {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+li {
+    background: rgb(136, 228, 242);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+li.done {
+    text-decoration: line-through;
+    color: rgb(255, 255, 255);
+}
+
+.btn-group button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.doneBtn {
+    background: #82f366;
+    color: rgb(0, 0, 0);
+}
+
+.deleteBtn {
+     background: #f36666;
+    color: rgb(1, 1, 1);
+}
+</style>
+</head>
+<body>
+
+<h1>🎀 Add Dream 🎀</h1>
+<input type="text" id="wishInput" placeholder="Enter your wish...">
+<button id="addBtn">Add</button>
+
+<ul id="wishList"></ul>
+
+<script>
+const wishInput = document.getElementById('wishInput');
+const addBtn = document.getElementById('addBtn');
+const wishList = document.getElementById('wishList');
+
+// Load saved wishes from localStorage
+let wishes = JSON.parse(localStorage.getItem('wishes')) || [];
+renderList();
+
+// Add new wish
+addBtn.addEventListener('click', () => {
+    const text = wishInput.value.trim();
+    if (text === "") {
+        alert("Please enter a wish!");
+        return;
+    }
+    wishes.push({ text, done: false });
+    saveAndRender();
+    wishInput.value = "";
+});
+
+// Toggle done
+function toggleDone(index) {
+    wishes[index].done = !wishes[index].done;
+    saveAndRender();
+}
+
+// Delete wish
+function deleteWish(index) {
+    if (confirm("Delete this wish?")) {
+        wishes.splice(index, 1);
+        saveAndRender();
+    }
+}
+
+// Save to localStorage and render
+function saveAndRender() {
+    localStorage.setItem('wishes', JSON.stringify(wishes));
+    renderList();
+}
+
+// Render the list
+function renderList() {
+    wishList.innerHTML = "";
+    wishes.forEach((wish, index) => {
+        const li = document.createElement('li');
+        li.className = wish.done ? "done" : "";
+        li.innerHTML = `
+            <span>${wish.text}</span>
+            <div class="btn-group">
+                <button class="doneBtn" onclick="toggleDone(${index})">${wish.done ? "Undo" : "Done"}</button>
+                <button class="deleteBtn" onclick="deleteWish(${index})">Delete</button>
+            </div>
+        `;
+        wishList.appendChild(li);
+    });
+}
+</script>
 <!-- floating stickers -->
 <div class="sticker heart1">💖</div>
 <div class="sticker s2">💚</div>
