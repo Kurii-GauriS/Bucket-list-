@@ -46,7 +46,7 @@ h1 {
 }
 
 video {
-    border: 2px solid #333;
+    border: 2px solid #85f5ae;
     border-radius: 8px;
     max-width: 100%;
 }
@@ -168,8 +168,8 @@ function captureFrame() {
 
 // Create the 4-photo strip
 function createStrip() {
-    const photoWidth = 300;
-    const photoHeight = 200;
+    const photoWidth = 400;
+    const photoHeight = 400;
     const noteHeight = 50;
     const spacing = 10;
     const totalHeight = (photoHeight * 4) + (spacing * 3) + noteHeight;
@@ -188,9 +188,9 @@ function createStrip() {
 
     // Draw note
     ctx.fillStyle = "black";
-    ctx.font = "16px Arial";
+    ctx.font = "16px Popping";
     ctx.textAlign = "center";
-    ctx.fillText(noteInput.value || "My Polaroid Strip", photoWidth / 2, totalHeight - (noteHeight / 2) + 5);
+    ctx.fillText(noteInput.value || "𝟏𝟒𝟑𓆩🖤𓆪𝕊𝕥𝕒𝕪 𝟜𝕖𝕧𝕖𝕣 ", photoWidth / 2, totalHeight - (noteHeight / 2) + 5);
 }
 
 // Handle 4-photo capture sequence with countdown
@@ -200,7 +200,7 @@ startBtn.addEventListener('click', async () => {
     downloadBtn.disabled = true;
 
     for (let i = 0; i < 4; i++) {
-        await showCountdown(3); // 3-second countdown
+        await showCountdown(5); // 5-second countdown
         photos.push(captureFrame());
     }
 
