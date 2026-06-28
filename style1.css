@@ -73,7 +73,6 @@
     pointer-events:none;
     animation:float 5s ease-in-out infinite;
 }
-
 .s1{top:8%;left:3%;}
 .s2{top:15%;right:4%;}
 .s3{top:28%;left:8%;}
@@ -112,6 +111,14 @@
     font-size:2rem;
     pointer-events:none;
     animation:float 4s ease-in-out infinite;
+}
+.sticker {
+    pointer-events: none;
+    z-index: 0;
+}
+.sticker {
+    opacity: 1;
+    z-index: -1;
 }
 
 .heart1{
