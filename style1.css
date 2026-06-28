@@ -19,17 +19,18 @@
 
     display:grid;
 
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(4,1fr);
 
-    gap:25px;
+    gap:15px;
 
-    width:850px;
+    width:950px;
 
-    margin:40px auto;
+    margin:50px auto;
 }
 .polaroid:hover{
     transform:scale(1.05) rotate(2deg);
 }
+
 .playlist-grid{
 
     display:flex;
