@@ -27,6 +27,9 @@
 
     margin:40px auto;
 }
+.polaroid:hover{
+    transform:scale(1.05) rotate(2deg);
+}
 .playlist-grid{
 
     display:flex;
